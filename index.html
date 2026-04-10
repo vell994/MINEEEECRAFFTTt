@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <!-- Favicon для браузеров -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- PWA иконки -->
+    <link rel="icon" type="image/png" sizes="192x192" href="minecraft_logo_icon_168974.webp">
+    <link rel="icon" type="image/png" sizes="512x512" href="minecraft_logo_icon_168974.webp">
+
+
+    <!-- Метатеги для отображения в мессенджерах -->
+    <meta property="og:title" content="нарисуй скин">
+    <meta property="og:description" content="заходи на сайт и рисуйвсе что хочеш в пикселях!">
+    <meta property="og:image" content="https://vell994.github.io/MINEEEECRAFFTT/minecraft_logo_icon_168974/">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://vell994.github.io/MINEEEECRAFFTT/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:site_name" content="рисовашка">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="нарисуй скин">
+    <meta name="twitter:description" content="заходи на сайт и рисуйвсе что хочеш в пикселях!">
+    <meta name="twitter:image" content="https://vell994.github.io/MINEEEECRAFFTT/minecraft_logo_icon_168974/">
+    <meta charset="UTF-8">
+    <title>Minecraft Pixel Art Creator</title>
+    <!-- Подключаем Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Добавляем базовые стили */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            margin-top: 50px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        button {
+            display: block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        canvas {
+            border: 1px solid black;
+        }
+          /* Стили для иконки (можно заменить на свой шрифтовой иконочный шрифт, например FontAwesome) */
+    .link-icon {
+      display: inline-block;
+      width: 16px; /* Размер иконки */
+      height: 16px;
+      background-image: url('path/to/your/icon.png'); /* СЮДА ВСТАВЬ ПУТЬ К СВОЕЙ ИКОНКЕ */
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-right: 5px; /* Отступ между иконкой и текстом */
+      vertical-align: middle;
+    }
+    </style>
+</head>
+
+<body>
+    
+<script>
+  // Функция, которая добавляет иконку перед текстом ссылки
+  function addIconToLink(linkId, iconClass) {
+    // Находим ссылку по id (СЮДА ВСТАВЬ id СВОЕЙ ССЫЛКИ)
+    const link = document.getElementById(linkId);
+    if (!link) return; // Если ссылка не найдена — выходим
+
+    // Создаём элемент для иконки
+    const icon = document.createElement('span');
+    icon.className = iconClass; // Присваиваем класс с иконкой (СЮДА МОЖНО ДОБАВИТЬ СВОЙ КЛАСС)
+
+    // Вставляем иконку перед текстом ссылки
+    link.insertBefore(icon, link.firstChild);
+  }
+
+  // Вызываем функцию для нашей ссылки
+  // Первый параметр — id ссылки, второй — класс иконки
+  addIconToLink('myLink', 'link-icon');
+</script>
+
+     
+<!-- Контейнер для нашего квиза -->
+<div class="quiz-container">
+    <h2>Проверь себя!</h2>
+    <ol class="questions-list">
+        <!-- Первый вопрос -->
+        <li>
+            <label>
+                <span>кто состоял в арасакабич?</span>
+                <select name="question1">
+                    <option value="">Выберите...</option>
+                    <option value="green">вмутя,гельмо,оптимист</option>
+                    <option value="red">винкс,дурашка,нагибайка</option>
+                    <option value="blue">наклс,винкс,нагибайка</option>
+                </select>
+            </label>
+        </li>
+        <!-- Второй вопрос -->
+        <li>
+            <label>
+                <span>кто сделал  дурашку роботом?</span>
+                <select name="question2">
+                    <option value="">Выберите...</option>
+                    <option value="ussr">нагибайка,наклс,винкс</option>
+                    <option value="usa">нагибайка</option>
+                    <option value="ukraine">новикони</option>
+                </select>
+            </label>
+        </li>
+        <!-- Третий вопрос -->
+        <li>
+            <label>
+                <span>Кто закрыл участников академии в энде?</span>
+                <select name="question3">
+                    <option value="">Выберите...</option>
+                    <option value="tolstoy">санчез</option>
+                    <option value="doestoevsky">арасаки</option>
+                    <option value="chekhov">их не закрывали в энде</option>
+                </select>
+            </label>
+        </li>
+    </ol>
+    <button onclick="checkQuiz()">Показать результат</button>
+    <div id="results"></div>
+</div>
+
+
+    <!-- Контейнер для нашего квиза -->
+
+    
+     
+  
+    <div class="container">
+        <h1>Minecraft Pixel Art Creator</h1>
+        
+        <!-- Главная панель навигации -->
+        <nav class="navbar navbar-light bg-light mb-3">
+            <a class="navbar-brand">Главная</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="#editor">Создать новое произведение</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery">Моя галерея</a></li>
+                <li class="nav-item"><a class="nav-link" href="#community">Сообщество</a></li>
+            </ul>
+        </nav>
+    
+        <!-- Основная секция -->
+        <section id="main-section">
+            <canvas id="pixel-canvas" width="500" height="500"></canvas>
+            <br />
+            <button onclick="saveImage()">Сохранить рисунок кота</button>
+        </section>
+        
+        <!-- Галерея -->
+        <section id="gallery">
+            
+            <div id="my-artworks-container"></div>
+        </section>
+        
+        <!-- Профиль пользователя -->
+        <section id="profile">
+            <h2>Ваш профиль</h2>
+            <p><strong>Имя пользователя:МЯЯЯЯУУУУ</strong> <span id="username"></span></p>
+            <p><strong>Количество работ:1</strong> <span id="work-count"></span></p>
+        </section>
+        
+        <!-- Экспорт файла -->
+        <section id="export">
+            <h2>Экспортировать файл</h2>
+            <form>
+                <label for="file-format">Формат файла:</label>
+                <select id="file-format">
+                    <option value="png">PNG</option>
+                    <option value="jpeg">JPEG</option>
+                    <option value="svg">SVG</option>
+                </select>
+                
+                <input type="submit" value="Экспортируйте файл" onclick="exportFile()">
+            </form>
+        </section>
+    </div>
+
+    <!-- Подключаем jQuery и Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let currentColor = '#000'; // Текущий активный цвет
+        let ctx = null; // Контекст canvas'а
+
+        window.onload = () => {
+            // Инициализация контекста canvas'а
+            const canvas = document.querySelector('#pixel-canvas');
+            ctx = canvas.getContext('2d');
+
+            // Рисуем сетку квадратов
+            drawGrid();
+
+            // Устанавливаем слушатель события click для рисования
+            canvas.addEventListener('click', e => {
+                const rect = canvas.getBoundingClientRect(); // Определяем координаты клика относительно canvas'а
+                const x = Math.floor((e.clientX - rect.left) / 10); // Каждое деление сетки имеет ширину 10px
+                const y = Math.floor((e.clientY - rect.top) / 10);
+
+                fillPixel(x, y, currentColor); // Заполняем соответствующий пиксель заданным цветом
+            });
+        };
+
+        // Функция рисования сетки
+        function drawGrid() {
+            const size = 50; // Размер сетки (50х50)
+            const cellSize = 10; // Ширина каждого квадрата
+            ctx.clearRect(0, 0, 500, 500); // Очищаем canvas
+            for(let i = 0; i <= size; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i*cellSize, 0);
+                ctx.lineTo(i*cellSize, size*cellSize);
+                ctx.strokeStyle = "#ccc";
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(0, i*cellSize);
+                ctx.lineTo(size*cellSize, i*cellSize);
+                ctx.stroke();
+            }
+        }
+
+        // Функция заполнения пикселя цветом
+        function fillPixel(x, y, color) {
+            if (ctx && x >= 0 && y >= 0 && x < 50 && y < 50) { // Проверяем пределы
+                ctx.fillStyle = color;
+                ctx.fillRect(x*10, y*10, 10, 10); // Закрашиваем прямоугольник размером 10x10 px
+            }
+        }
+
+        // Сохранение изображения на сервер
+        async function saveImage() {
+            try {
+                const dataURL = canvas.toDataURL('image/png'); // Преобразовываем canvas в base64 картинку
+                await fetch('/api/save-image', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ image: dataURL })
+                });
+                alert('Изображение успешно сохранено!');
+            } catch(e) {
+                alert('Ошибка сохранения изображения.');
+            }
+        }
+
+        // Экспортируем файл
+        function exportFile() {
+            const format = document.getElementById('file-format').value;
+            const dataURL = canvas.toDataURL(`image/${format}`); // Генерируем нужную ссылку на файл
+            const link = document.createElement('a');
+            link.href = dataURL;
+            link.download = `mypixelart.${format}`;
+            link.click();
+        }
+        
+    </script>
+    <script>
+    function checkQuiz() {
+        // Массив правильных ответов
+        const answers = ["red", "ussr", "doestoevsky"];
+
+        // Собираем выбранные пользователем ответы
+        const selectedValues = [];
+        const selects = document.querySelectorAll('.questions-list select');
+        selects.forEach(select => {
+            selectedValues.push(select.value);
+        });
+
+        // Подсчет верных ответов
+        let correctCount = 0;
+        for(let i = 0; i < answers.length; i++) {
+            if(selectedValues[i] === answers[i]) {
+                correctCount++;
+            }
+        }
+
+        // Сообщаем пользователю количество правильных ответов
+        document.getElementById('results').innerHTML =
+            '<p>Верно ответил на ' + correctCount + ' из ' + answers.length + ' вопросов.</p>';
+    }
+</script>
+</body>
+</html>
